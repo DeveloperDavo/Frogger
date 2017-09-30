@@ -1,8 +1,12 @@
 var gulp = require('gulp');
-var jasmineBrowser = require('gulp-jasmine-browser');
+var Server = require('karma').Server;
 
-gulp.task('test', function() {
-    return gulp.src(['spec/*[sS]pec.js', 'js/**'])
-        .pipe(jasmineBrowser.specRunner())
-        .pipe(jasmineBrowser.server({port: 8888}));
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start();
 });

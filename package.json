@@ -8,11 +8,13 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-jasmine": "^2.4.2",
-    "gulp-jasmine-browser": "^1.9.1"
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "gulp test"
   },
   "author": "",
   "license": "MIT"
