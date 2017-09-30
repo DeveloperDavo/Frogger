@@ -99,4 +99,8 @@ var Engine = function () {
     ]);
     Resources.onReady(init);
 
+    this.temp = function () {
+        return 7;
+    }
+
 };
