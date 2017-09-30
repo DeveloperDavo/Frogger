@@ -1,6 +1,6 @@
 # Frogger
 
-My implementation of the inal project from [Object Orientated JavaScript - Udacity](https://www.udacity.com/course/javascript-design-patterns--ud989
+My implementation of the final project from [Object Orientated JavaScript - Udacity](https://www.udacity.com/course/javascript-design-patterns--ud989
 ).
 * [Starter code](https://github.com/udacity/frontend-nanodegree-arcade-game)  
 * [Rubric](https://review.udacity.com/#!/rubrics/15/view)  
