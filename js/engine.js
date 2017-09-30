@@ -21,7 +21,7 @@ var IMAGE_RELATIVE_URLS = [
     'images/grass-block.png'
 ];
 var NUM_ROWS = 6, NUM_COLS = 5;
-var renderGrid = function () {
+var renderGrid = function (ctx) {
     var row, col;
 
     for (row = 0; row < NUM_ROWS; row++) {
@@ -37,20 +37,14 @@ var renderGrid = function () {
         }
     }
 };
-{
-    /* Predefine the variables we'll be using within this scope,
-     * create the canvas element, grab the 2D context for that canvas
-     * set the canvas elements height/width and add it to the DOM.
-     */
-    var doc = document,
-        win = window,
-        canvas = doc.createElement('canvas'),
+var Engine = function () {
+    var canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
 
     canvas.width = 505;
     canvas.height = 606;
-    doc.body.appendChild(canvas);
+    document.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -77,7 +71,7 @@ var renderGrid = function () {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        window.requestAnimationFrame(main);
     }
 
     /* This function does some initial setup that should only occur once,
@@ -85,12 +79,11 @@ var renderGrid = function () {
      * game loop.
      */
     function init() {
-        lastTime = Date.now();
         main();
     }
 
     function render() {
-        renderGrid();
+        renderGrid(ctx);
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -106,4 +99,4 @@ var renderGrid = function () {
     ]);
     Resources.onReady(init);
 
-}
+};
