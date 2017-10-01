@@ -1,3 +1,5 @@
+var COLUMN_WIDTH = 101;
+
 var Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
@@ -30,15 +32,15 @@ var Player = function (x, y) {
 
     this.handleInput = function (direction) {
         if (direction === 'left') {
-            this.x -= 100;
+            this.x -= COLUMN_WIDTH;
         } else if (direction === 'right') {
-            this.x += 100;
+            this.x += COLUMN_WIDTH;
         }
     }
 };
 
 var allEnemies = [new Enemy(0, 50, 200)];
-var player = new Player(200, 300);
+var player = new Player(2 * COLUMN_WIDTH, 300);
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
