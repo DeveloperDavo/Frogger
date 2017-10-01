@@ -4,21 +4,22 @@
  * a simple "caching" layer so it will reuse cached images if you attempt
  * to load the same image multiple times.
  */
-var Resources = function () {
+(function() {
     var resourceCache = {};
+    var loading = [];
     var readyCallbacks = [];
 
     /* This is the publicly accessible image loading function. It accepts
      * an array of strings pointing to image files or a string for a single
      * image. It will then call our private image loading function accordingly.
      */
-    this.load = function (urlOrArr) {
-        if (urlOrArr instanceof Array) {
+    function load(urlOrArr) {
+        if(urlOrArr instanceof Array) {
             /* If the developer passed in an array of images
              * loop through each value and call our image
              * loader on that image file
              */
-            urlOrArr.forEach(function (url) {
+            urlOrArr.forEach(function(url) {
                 _load(url);
             });
         } else {
@@ -28,13 +29,13 @@ var Resources = function () {
              */
             _load(urlOrArr);
         }
-    };
+    }
 
     /* This is our private image loader function, it is
      * called by the public image loader function.
      */
     function _load(url) {
-        if (resourceCache[url]) {
+        if(resourceCache[url]) {
             /* If this URL has been previously loaded it will exist within
              * our resourceCache array. Just return that image rather
              * re-loading the image.
@@ -45,7 +46,7 @@ var Resources = function () {
              * within our cache; we'll need to load this image.
              */
             var img = new Image();
-            img.onload = function () {
+            img.onload = function() {
                 /* Once our image has properly loaded, add it to our cache
                  * so that we can simply return this image if the developer
                  * attempts to load this file in the future.
@@ -55,10 +56,8 @@ var Resources = function () {
                 /* Once the image is actually loaded and properly cached,
                  * call all of the onReady() callbacks we have defined.
                  */
-                if (isReady()) {
-                    readyCallbacks.forEach(function (func) {
-                        func();
-                    });
+                if(isReady()) {
+                    readyCallbacks.forEach(function(func) { func(); });
                 }
             };
 
@@ -75,29 +74,38 @@ var Resources = function () {
      * have been previously loaded. If an image is cached, this functions
      * the same as calling load() on that URL.
      */
-    this.get = function (url) {
+    function get(url) {
         return resourceCache[url];
-    };
+    }
 
     /* This function determines if all of the images that have been requested
      * for loading have in fact been properly loaded.
      */
-    var isReady = function () {
+    function isReady() {
         var ready = true;
-        for (var k in resourceCache) {
-            if (resourceCache.hasOwnProperty(k) &&
+        for(var k in resourceCache) {
+            if(resourceCache.hasOwnProperty(k) &&
                 !resourceCache[k]) {
                 ready = false;
             }
         }
         return ready;
-    };
+    }
 
     /* This function will add a function to the callback stack that is called
      * when all requested images are properly loaded.
      */
-    this.onReady = function (func) {
+    function onReady(func) {
         readyCallbacks.push(func);
     }
 
-};
+    /* This object defines the publicly accessible functions available to
+     * developers by creating a global Resources object.
+     */
+    window.Resources = {
+        load: load,
+        get: get,
+        onReady: onReady,
+        isReady: isReady
+    };
+})();
