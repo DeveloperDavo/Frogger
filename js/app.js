@@ -2,7 +2,6 @@ var Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -17,17 +16,24 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var Player = function () {
+var Player = function (x, y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
+
     this.update = function () {
     };
+
     this.render = function () {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
+
     this.handleInput = function () {
     }
 };
 
 var allEnemies = [new Enemy(0, 50, 200)];
-var player = new Player();
+var player = new Player(200, 300);
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
