@@ -1,4 +1,6 @@
 var BLOCK_WIDTH = 101;
+var BLOCK_HEIGHT = 87;
+var HEIGHT_WITHIN_BLOCK = 60;
 
 var Enemy = function (x, y, speed) {
     this.x = x;
@@ -39,8 +41,8 @@ var Player = function (x, y) {
     }
 };
 
-var allEnemies = [new Enemy(0, 50, 200)];
-var player = new Player(2 * BLOCK_WIDTH, 300);
+var allEnemies = [new Enemy(0, HEIGHT_WITHIN_BLOCK, 200)];
+var player = new Player(2 * BLOCK_WIDTH, HEIGHT_WITHIN_BLOCK + 4 * BLOCK_HEIGHT);
 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
