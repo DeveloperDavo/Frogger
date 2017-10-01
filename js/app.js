@@ -1,5 +1,7 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
+    this.x = x;
+    this.y = y;
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -14,6 +16,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x += dt * 200;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -29,8 +32,7 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
-
+var allEnemies = [new Enemy(0, 50)];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -42,5 +44,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+    // TODO player.handleInput(allowedKeys[e.keyCode]);
 });
