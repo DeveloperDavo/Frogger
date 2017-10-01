@@ -1,6 +1,7 @@
-describe("Engine", function () {
-    it("temp should return 7", function () {
+xdescribe("Engine", function () {
+    it("should call render from Enemy", function () {
         var engine = new Engine();
-        expect(engine.temp()).toBe(7);
+        engine.init();
+        expect(enemy.render()).toHaveBeenCalled();
     });
 });

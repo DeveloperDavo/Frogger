@@ -12,44 +12,22 @@
  * This engine makes the canvas' context (ctx) object globally available to make 
  * writing app.js a little simpler to work with.
  */
-var IMAGE_RELATIVE_URLS = [
-    'images/water-block.png',
-    'images/stone-block.png',
-    'images/stone-block.png',
-    'images/stone-block.png',
-    'images/grass-block.png',
-    'images/grass-block.png'
-];
-var NUM_ROWS = 6, NUM_COLS = 5;
-var renderGrid = function (ctx) {
-    var row, col;
-
-    for (row = 0; row < NUM_ROWS; row++) {
-        for (col = 0; col < NUM_COLS; col++) {
-            /* The drawImage function of the canvas' context element
-                 * requires 3 parameters: the image to draw, the x coordinate
-                 * to start drawing and the y coordinate to start drawing.
-                 * We're using our Resources helpers to refer to our images
-                 * so that we get the benefits of caching these images, since
-                 * we're using them over and over.
-                 */
-            ctx.drawImage(Resources.get(IMAGE_RELATIVE_URLS[row]), col * 101, row * 83);
-        }
-    }
-};
-var Engine = function () {
-    var canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d'),
-        lastTime;
-
-    canvas.width = 505;
-    canvas.height = 606;
-    document.body.appendChild(canvas);
+var Engine = function (canvas, resources) {
+    var IMAGE_RELATIVE_URLS = [
+        'images/water-block.png',
+        'images/stone-block.png',
+        'images/stone-block.png',
+        'images/stone-block.png',
+        'images/grass-block.png',
+        'images/grass-block.png'
+    ];
+    var NUM_ROWS = 6, NUM_COLS = 5;
+    var ctx = canvas.getContext('2d'), lastTime;
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
-    function main() {
+    var main = function () {
         /* Get our time delta information which is required if your game
          * requires smooth animation. Because everyone's computer processes
          * instructions at different speeds we need a constant value that
@@ -78,29 +56,41 @@ var Engine = function () {
      * particularly setting the lastTime variable that is required for the
      * game loop.
      */
-    function init() {
+    this.init = function () {
         main();
-    }
+    };
 
     function render() {
         renderGrid(ctx);
     }
 
+    function renderGrid(ctx) {
+        var row, col;
+
+        for (row = 0; row < NUM_ROWS; row++) {
+            for (col = 0; col < NUM_COLS; col++) {
+                /* The drawImage function of the canvas' context element
+                     * requires 3 parameters: the image to draw, the x coordinate
+                     * to start drawing and the y coordinate to start drawing.
+                     * We're using our Resources helpers to refer to our images
+                     * so that we get the benefits of caching these images, since
+                     * we're using them over and over.
+                     */
+                ctx.drawImage(resources.get(IMAGE_RELATIVE_URLS[row]), col * 101, row * 83);
+            }
+        }
+    };
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
      */
-    Resources.load([
+    resources.load([
         'images/stone-block.png',
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png'
     ]);
-    Resources.onReady(init);
-
-    this.temp = function () {
-        return 7;
-    }
+    resources.onReady(this.init);
 
 };
