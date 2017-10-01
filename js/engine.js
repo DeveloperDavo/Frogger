@@ -23,38 +23,11 @@ var Engine = function (ctx, resources) {
     ];
     var NUM_ROWS = 6, NUM_COLS = 5;
 
-    /* This function serves as the kickoff point for the game loop itself
-     * and handles properly calling the update and render methods.
-     */
     var main = function () {
-        /* Get our time delta information which is required if your game
-         * requires smooth animation. Because everyone's computer processes
-         * instructions at different speeds we need a constant value that
-         * would be the same for everyone (regardless of how fast their
-         * computer is) - hurray time!
-         */
-        var now = Date.now();
-
-        /* Call our update/render functions, pass along the time delta to
-         * our update function since it may be used for smooth animation.
-         */
         render();
-
-        /* Set our lastTime variable which is used to determine the time delta
-         * for the next time this function is called.
-         */
-        lastTime = now;
-
-        /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
-         */
         window.requestAnimationFrame(main);
     };
 
-    /* This function does some initial setup that should only occur once,
-     * particularly setting the lastTime variable that is required for the
-     * game loop.
-     */
     this.init = function () {
         main();
     };
@@ -78,11 +51,8 @@ var Engine = function (ctx, resources) {
                 ctx.drawImage(resources.get(IMAGE_RELATIVE_URLS[row]), col * 101, row * 83);
             }
         }
-    };
-    /* Go ahead and load all of the images we know we're going to need to
-     * draw our game level. Then set init as the callback method, so that when
-     * all of these images are properly loaded our game will start.
-     */
+    }
+
     resources.load([
         'images/stone-block.png',
         'images/water-block.png',
@@ -90,6 +60,7 @@ var Engine = function (ctx, resources) {
         'images/enemy-bug.png',
         'images/char-boy.png'
     ]);
+
     resources.onReady(this.init);
 
 };
