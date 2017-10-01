@@ -1,4 +1,4 @@
-xdescribe("Engine", function () {
+describe("Engine", function () {
     var canvas;
     var resources;
     var engine;
@@ -20,8 +20,13 @@ xdescribe("Engine", function () {
         document.body.removeChild(canvas);
     });
 
-    it("should call render from Enemy", function () {
+    it("init should call render in Enemy", function () {
+        var enemy = new Enemy();
+        engine.setEnemy(enemy);
+
+        spyOn(enemy, 'render');
         engine.init();
-        expect(enemy.render()).toHaveBeenCalled();
+
+        expect(enemy.render).toHaveBeenCalled();
     });
 });

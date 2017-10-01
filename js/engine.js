@@ -23,8 +23,13 @@ var Engine = function (ctx, resources) {
     ];
     var NUM_ROWS = 6, NUM_COLS = 5;
 
+    this.setEnemy = function (enemy) {
+        this.enemy = enemy;
+    };
+
     this.init = function () {
         renderGrid();
+        this.enemy.render();
     };
 
     function renderGrid() {
