@@ -12,7 +12,7 @@
  * This engine makes the canvas' context (ctx) object globally available to make 
  * writing app.js a little simpler to work with.
  */
-var Engine = function (canvas, resources) {
+var Engine = function (ctx, resources) {
     var IMAGE_RELATIVE_URLS = [
         'images/water-block.png',
         'images/stone-block.png',
@@ -22,7 +22,6 @@ var Engine = function (canvas, resources) {
         'images/grass-block.png'
     ];
     var NUM_ROWS = 6, NUM_COLS = 5;
-    var ctx = canvas.getContext('2d'), lastTime;
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -50,7 +49,7 @@ var Engine = function (canvas, resources) {
          * function again as soon as the browser is able to draw another frame.
          */
         window.requestAnimationFrame(main);
-    }
+    };
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -61,10 +60,10 @@ var Engine = function (canvas, resources) {
     };
 
     function render() {
-        renderGrid(ctx);
+        renderGrid();
     }
 
-    function renderGrid(ctx) {
+    function renderGrid() {
         var row, col;
 
         for (row = 0; row < NUM_ROWS; row++) {

@@ -4,7 +4,8 @@ window.onload = function () {
     canvas.height = 606;
 
     document.body.appendChild(canvas);
+    var ctx = canvas.getContext('2d');
 
     var resources = new Resources();
-    new Engine(canvas, resources);
+    new Engine(ctx, resources);
 };
