@@ -23,18 +23,9 @@ var Engine = function (ctx, resources) {
     ];
     var NUM_ROWS = 6, NUM_COLS = 5;
 
-    var main = function () {
-        render();
-        window.requestAnimationFrame(main);
-    };
-
     this.init = function () {
-        main();
-    };
-
-    function render() {
         renderGrid();
-    }
+    };
 
     function renderGrid() {
         var row, col;
