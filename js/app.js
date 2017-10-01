@@ -29,6 +29,7 @@ var Player = function (x, y) {
     };
 
     this.handleInput = function () {
+        this.x = 100;
     }
 };
 
