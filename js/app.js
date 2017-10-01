@@ -28,8 +28,12 @@ var Player = function (x, y) {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
 
-    this.handleInput = function () {
-        this.x = 100;
+    this.handleInput = function (direction) {
+        if (direction === 'left') {
+            this.x -= 100;
+        } else if (direction === 'right') {
+            this.x += 100;
+        }
     }
 };
 
