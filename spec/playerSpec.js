@@ -26,4 +26,14 @@ describe("Player", function() {
         expect(player.x).toBe(202);
         expect(player.y).toBe(300 - 87);
     });
+
+    it("should move down when pressing down", function () {
+        var x = 202, y = 300, direction = 'down';
+        var player = new Player(x, y);
+
+        player.handleInput(direction);
+
+        expect(player.x).toBe(202);
+        expect(player.y).toBe(300 + 87);
+    });
 });

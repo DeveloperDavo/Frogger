@@ -39,6 +39,8 @@ var Player = function (x, y) {
             this.x += BLOCK_WIDTH;
         } else if (direction === 'up') {
             this.y -= BLOCK_HEIGHT;
+        } else if (direction === 'down') {
+            this.y += BLOCK_HEIGHT;
         }
     }
 };
