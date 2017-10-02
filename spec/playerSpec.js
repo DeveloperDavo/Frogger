@@ -24,7 +24,7 @@ describe("Player", function() {
         player.handleInput(direction);
 
         expect(player.x).toBe(202);
-        expect(player.y).toBe(300 - 87);
+        expect(player.y).toBe(300 - BLOCK_HEIGHT);
     });
 
     it("should move down when pressing down", function () {
@@ -34,6 +34,6 @@ describe("Player", function() {
         player.handleInput(direction);
 
         expect(player.x).toBe(202);
-        expect(player.y).toBe(300 + 87);
+        expect(player.y).toBe(300 + BLOCK_HEIGHT);
     });
 });

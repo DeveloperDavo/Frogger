@@ -1,5 +1,5 @@
 var BLOCK_WIDTH = 101;
-var BLOCK_HEIGHT = 87;
+var BLOCK_HEIGHT = 83;
 var HEIGHT_WITHIN_BLOCK = 60;
 
 var Enemy = function (x, y, speed) {
