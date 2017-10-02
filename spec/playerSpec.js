@@ -16,4 +16,14 @@ describe("Player", function() {
 
         expect(player.x).toBe(303);
     });
+
+    it("should move up when pressing up", function () {
+        var x = 202, y = 300, direction = 'up';
+        var player = new Player(x, y);
+
+        player.handleInput(direction);
+
+        expect(player.x).toBe(202);
+        expect(player.y).toBe(300 - 87);
+    });
 });
