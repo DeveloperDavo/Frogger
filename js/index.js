@@ -1,3 +1,4 @@
 window.onload = function () {
-    new Engine(this);
+    var resources = new Resources();
+    new Engine(this, resources);
 };
