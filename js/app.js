@@ -2,31 +2,6 @@ var BLOCK_WIDTH = 101;
 var BLOCK_HEIGHT = 83;
 var HEIGHT_WITHIN_BLOCK = 60;
 
-var Player = function (x, y) {
-    this.x = x;
-    this.y = y;
-    this.sprite = 'images/char-boy.png';
-
-    this.update = function () {
-    };
-
-    this.render = function () {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
-
-    this.handleInput = function (direction) {
-        if (direction === 'left') {
-            this.x -= BLOCK_WIDTH;
-        } else if (direction === 'right') {
-            this.x += BLOCK_WIDTH;
-        } else if (direction === 'up') {
-            this.y -= BLOCK_HEIGHT;
-        } else if (direction === 'down') {
-            this.y += BLOCK_HEIGHT;
-        }
-    }
-};
-
 var App = function (global) {
     var resources = new Resources();
     var allEnemies = [new Enemy(0, HEIGHT_WITHIN_BLOCK, 200)];
