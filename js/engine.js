@@ -138,6 +138,14 @@ var Engine = function (global, resources, allEnemies, player) {
         renderEntities();
     }
 
+    var renderPlayer = function () {
+        ctx.drawImage(Resources.get(player.sprite), player.x, player.y);
+    };
+
+    var renderEnemy = function (enemy) {
+        ctx.drawImage(Resources.get(enemy.sprite), enemy.x, enemy.y);
+    };
+
     /* This function is called by the render function and is called on each game
      * tick. Its purpose is to then call the render functions you have defined
      * on your enemy and player entities within app.js
@@ -147,10 +155,9 @@ var Engine = function (global, resources, allEnemies, player) {
          * the render function you have defined.
          */
         allEnemies.forEach(function (enemy) {
-            enemy.render();
+            renderEnemy(enemy);
         });
-
-        player.render();
+        renderPlayer();
     }
 
     /* This function does nothing but it could have been a good place to

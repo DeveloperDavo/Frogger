@@ -6,10 +6,6 @@ var Player = function (x, y) {
     this.update = function () {
     };
 
-    this.render = function () {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
-
     this.handleInput = function (direction) {
         if (direction === 'left') {
             this.x -= BLOCK_WIDTH;

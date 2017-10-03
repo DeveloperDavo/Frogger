@@ -11,8 +11,3 @@ Enemy.prototype.update = function (timeDifferenceBetweenTicks) {
     // all computers.
     this.x += timeDifferenceBetweenTicks * this.speed;
 };
-
-Enemy.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
