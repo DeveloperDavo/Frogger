@@ -45,16 +45,22 @@ var Player = function (x, y) {
     }
 };
 
-var allEnemies = [new Enemy(0, HEIGHT_WITHIN_BLOCK, 200)];
-var player = new Player(2 * BLOCK_WIDTH, HEIGHT_WITHIN_BLOCK + 4 * BLOCK_HEIGHT);
+var App = function (global) {
+    var resources = new Resources();
+    var allEnemies = [new Enemy(0, HEIGHT_WITHIN_BLOCK, 200)];
+    var player = new Player(2 * BLOCK_WIDTH, HEIGHT_WITHIN_BLOCK + 4 * BLOCK_HEIGHT);
 
-document.addEventListener('keyup', function (e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+    new Engine(global, resources, allEnemies, player);
 
-    player.handleInput(allowedKeys[e.keyCode]);
-});
+    document.addEventListener('keyup', function (e) {
+        var allowedKeys = {
+            37: 'left',
+            38: 'up',
+            39: 'right',
+            40: 'down'
+        };
+
+        player.handleInput(allowedKeys[e.keyCode]);
+    });
+};
+
