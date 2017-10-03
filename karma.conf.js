@@ -17,7 +17,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'js/app.js', 'js/enemy.js', 'js/player.js',
+            'js/*.js',
             'spec/*[sS]pec.js'
         ],
 
