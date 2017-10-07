@@ -1,6 +1,8 @@
 var BLOCK_WIDTH = 101;
 var BLOCK_HEIGHT = 83;
 var HEIGHT_WITHIN_BLOCK = 60;
+var NUM_ROWS = 6;
+var NUM_COLS = 5;
 
 var App = function (global) {
     var resources = new Resources();
