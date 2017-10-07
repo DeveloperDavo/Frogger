@@ -5,13 +5,18 @@ var Player = function (position) {
     this.update = function () {
         var x = this.position.x;
         var y = this.position.y;
+
         if (x >= X_MAX) {
             x = X_MAX;
         } else if (x <= 0) {
             x = 0;
         }
 
-        if (y > Y_MAX) y = Y_MAX;
+        if (y > Y_MAX) {
+            y = Y_MAX;
+        } else if (y <= Y_WIN) {
+            y = Y_START;
+        }
 
         this.position = new Position(x, y);
     };

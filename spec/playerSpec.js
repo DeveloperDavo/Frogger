@@ -69,4 +69,14 @@ describe("Player", function () {
         expect(player.position.x).toBe(x);
         expect(player.position.y).toBe(Y_MAX);
     });
+
+    it("should reset player when player reaches goal", function () {
+        while (player.position.y > Y_WIN - BLOCK_HEIGHT)
+            player.handleInput('up');
+
+        player.update();
+
+        expect(player.position.x).toBe(x);
+        expect(player.position.y).toBe(Y_START);
+    });
 });
