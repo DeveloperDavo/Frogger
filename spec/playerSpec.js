@@ -4,7 +4,7 @@ describe("Player", function () {
     var x;
     var y;
 
-    beforeEach(function() {
+    beforeEach(function () {
         x = 1 * BLOCK_WIDTH;
         y = HEIGHT_WITHIN_BLOCK + 2 * BLOCK_HEIGHT;
         player = new Player(new Position(x, y));
@@ -41,8 +41,8 @@ describe("Player", function () {
     });
 
     it("should not move player off left hand side of board", function () {
-        player.handleInput('left');
-        player.handleInput('left');
+        while (player.position.x > 0 - BLOCK_WIDTH)
+            player.handleInput('left');
 
         player.update();
 
