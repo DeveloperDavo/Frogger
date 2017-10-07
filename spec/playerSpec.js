@@ -49,4 +49,13 @@ describe("Player", function () {
         expect(player.position.x).toBe(0);
         expect(player.position.y).toBe(y);
     });
+
+    it("should not move player off right hand side of board", function () {
+        while (player.position.x < X_MAX + BLOCK_WIDTH)
+            player.handleInput('right');
+
+        player.update();
+        expect(player.position.x).toBe(X_MAX);
+        expect(player.position.y).toBe(y);
+    });
 });

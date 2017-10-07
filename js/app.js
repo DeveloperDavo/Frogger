@@ -3,6 +3,7 @@ var BLOCK_HEIGHT = 83;
 var HEIGHT_WITHIN_BLOCK = 60;
 var NUM_ROWS = 6;
 var NUM_COLS = 5;
+var X_MAX = BLOCK_WIDTH * (NUM_COLS - 1);
 
 var App = function (global) {
     var resources = new Resources();
