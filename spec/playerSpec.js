@@ -6,7 +6,7 @@ describe("Player", function () {
 
     beforeEach(function() {
         x = 1 * BLOCK_WIDTH;
-        y = HEIGHT_WITHIN_BLOCK;
+        y = HEIGHT_WITHIN_BLOCK + 2 * BLOCK_HEIGHT;
         player = new Player(new Position(x, y));
     });
 
@@ -38,5 +38,15 @@ describe("Player", function () {
 
         expect(player.position.x).toBe(x);
         expect(player.position.y).toBe(y + BLOCK_HEIGHT);
+    });
+
+    it("should not move player off left hand side of board", function () {
+        player.handleInput('left');
+        player.handleInput('left');
+
+        player.update();
+
+        expect(player.position.x).toBe(0);
+        expect(player.position.y).toBe(y);
     });
 });

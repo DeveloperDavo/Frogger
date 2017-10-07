@@ -3,6 +3,7 @@ var Player = function (position) {
     this.sprite = 'images/char-boy.png';
 
     this.update = function () {
+        this.position = new Position(0, HEIGHT_WITHIN_BLOCK + 2 * BLOCK_HEIGHT);
     };
 
     this.handleInput = function (direction) {
