@@ -10,6 +10,9 @@ var Player = function (position) {
         } else if (x <= 0) {
             x = 0;
         }
+
+        if (y > Y_MAX) y = Y_MAX;
+
         this.position = new Position(x, y);
     };
 

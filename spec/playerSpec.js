@@ -55,7 +55,18 @@ describe("Player", function () {
             player.handleInput('right');
 
         player.update();
+
         expect(player.position.x).toBe(X_MAX);
         expect(player.position.y).toBe(y);
+    });
+
+    it("should not move player off bottom of board", function () {
+        while (player.position.y < Y_MAX + BLOCK_HEIGHT)
+            player.handleInput('down');
+
+        player.update();
+
+        expect(player.position.x).toBe(x);
+        expect(player.position.y).toBe(Y_MAX);
     });
 });
