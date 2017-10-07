@@ -139,7 +139,7 @@ var Engine = function (global, resources, allEnemies, player) {
     }
 
     var renderPlayer = function () {
-        ctx.drawImage(Resources.get(player.sprite), player.x, player.y);
+        ctx.drawImage(Resources.get(player.sprite), player.position.x, player.position.y);
     };
 
     var renderEnemy = function (enemy) {

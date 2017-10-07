@@ -5,7 +5,7 @@ var HEIGHT_WITHIN_BLOCK = 60;
 var App = function (global) {
     var resources = new Resources();
     var allEnemies = [new Enemy(0, HEIGHT_WITHIN_BLOCK, 200)];
-    var player = new Player(2 * BLOCK_WIDTH, HEIGHT_WITHIN_BLOCK + 4 * BLOCK_HEIGHT);
+    var player = new Player(new Position(2 * BLOCK_WIDTH, HEIGHT_WITHIN_BLOCK + 4 * BLOCK_HEIGHT));
 
     new Engine(global, resources, allEnemies, player);
 

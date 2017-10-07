@@ -1,6 +1,5 @@
-var Player = function (x, y) {
-    this.x = x;
-    this.y = y;
+var Player = function (position) {
+    this.position = position;
     this.sprite = 'images/char-boy.png';
 
     this.update = function () {
@@ -8,13 +7,13 @@ var Player = function (x, y) {
 
     this.handleInput = function (direction) {
         if (direction === 'left') {
-            this.x -= BLOCK_WIDTH;
+            this.position.x -= BLOCK_WIDTH;
         } else if (direction === 'right') {
-            this.x += BLOCK_WIDTH;
+            this.position.x += BLOCK_WIDTH;
         } else if (direction === 'up') {
-            this.y -= BLOCK_HEIGHT;
+            this.position.y -= BLOCK_HEIGHT;
         } else if (direction === 'down') {
-            this.y += BLOCK_HEIGHT;
+            this.position.y += BLOCK_HEIGHT;
         }
     }
 };
